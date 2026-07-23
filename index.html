@@ -128,10 +128,7 @@
     gap:12px;
     text-decoration:none;
   }
-  .spool{
-    width:44px; height:44px;
-    flex-shrink:0;
-  }
+
   .brand-text{ display:flex; flex-direction:column; line-height:1.15; }
   .brand-name{
     font-family:'Fraunces', serif;
@@ -171,6 +168,14 @@
   .links a svg{ width:20px; height:20px; }
   .links a:hover{ color:var(--coral); }
   .links a.active{ color:var(--coral); border-color:var(--coral); }
+
+  /* Menú desplegable para móviles */
+  #mnav {
+    display: none;
+  }
+  #mnav.show {
+    display: flex !important;
+  }
 
   .nav-actions{
     display:flex;
@@ -274,12 +279,26 @@
   }
   .btn-outline:hover{ background:var(--ink); color:var(--paper); }
 
-  .hero-art{
+  .hero-art {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position:relative;
-    aspect-ratio:1/1;
   }
 
-  /* Marquee of materials */
+  .logo {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+
+  .logo2{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+  }
+
+  /* Marquee */
   .marquee{
     border-top:1px solid rgba(46,42,36,0.12);
     border-bottom:1px solid rgba(46,42,36,0.12);
@@ -304,8 +323,16 @@
   .marquee-track span{ display:flex; align-items:center; gap:10px; }
   .dot{ color:var(--rose); }
 
-  /* Categories */
-  section{ padding:72px 0; }
+  /* Secciones */
+  section{ 
+    padding: 72px 0; 
+    scroll-margin-top: 120px;
+  }
+
+  #top{
+    scroll-margin-top:150px;
+  }
+
   .section-head{
     text-align:center;
     max-width:600px;
@@ -318,14 +345,8 @@
     color:var(--ink-soft);
     margin-top:10px;
   }
-section{
-    padding: 72px 0;
-    scroll-margin-top: 120px;
-}
 
-#top{
-    scroll-margin-top:150px;
-}
+  /* Categorías */
   .cat-grid{
     display:grid;
     grid-template-columns:repeat(5, 1fr);
@@ -363,7 +384,7 @@ section{
     border:2px solid var(--mustard);
   }
 
-  /* Products */
+  /* Productos */
   .prod-grid{
     display:grid;
     grid-template-columns:repeat(4, 1fr);
@@ -411,7 +432,7 @@ section{
     font-size:0.82rem;
   }
 
-  /* Story / about */
+  /* Nosotros */
   .about{
     display:grid;
     grid-template-columns:0.9fr 1.1fr;
@@ -426,8 +447,7 @@ section{
   .measure{
     height:44px;
     width:100%;
-    background:
-      repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 20px);
+    background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 20px);
     background-position:bottom;
     background-size:100% 20px;
     background-repeat:repeat-x;
@@ -437,19 +457,21 @@ section{
     margin-top:24px;
   }
 
-  /* Contact / location */
-.contact-grid{
+  /* Contacto */
+  .contact-grid{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-}
+  }
 
   .info-card{
     background:var(--paper);
     border:1px solid rgba(46,42,36,0.1);
     border-radius:var(--radius);
     padding:30px;
+    width:100%;
+    max-width:600px;
   }
 
   .info-row{
@@ -457,6 +479,7 @@ section{
     gap:14px;
     margin-bottom:18px;
   }
+  .info-row:last-child{ margin-bottom:0; }
   .info-row .ic{
     width:22px;height:22px;
     flex-shrink:0;
@@ -465,7 +488,7 @@ section{
   }
   .info-row div h4{
     margin:0 0 3px;
-    font-family:'Work Sans';
+    font-family:'Work Sans', sans-serif;
     font-weight:600;
     font-size:0.98rem;
   }
@@ -475,115 +498,58 @@ section{
     font-size:0.92rem;
   }
 
-
-  
-  form{
-    background:var(--paper);
-    border:1px solid rgba(46,42,36,0.1);
-    border-radius:var(--radius);
-    padding:30px;
-    display:flex;
-    flex-direction:column;
-    gap:16px;
-  }
-  form label{
-    font-size:0.85rem;
-    font-weight:600;
-    color:var(--ink-soft);
-    display:block;
-    margin-bottom:6px;
-  }
-  form input, form select, form textarea{
-    width:100%;
-    padding:11px 13px;
-    border-radius:5px;
-    border:1.5px solid rgba(46,42,36,0.2);
-    background:var(--linen);
-    font-family:'Work Sans';
-    font-size:0.95rem;
-    color:var(--ink);
-  }
-  form textarea{ resize:vertical; min-height:90px; }
-  form .row2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-  .form-note{
-    font-size:0.82rem;
-    color:var(--ink-soft);
-  }
-  .success-msg{
-    display:none;
-    background:#EAF1E4;
-    border:1px solid var(--sage);
-    color:#3F5533;
-    padding:12px 14px;
-    border-radius:6px;
-    font-size:0.9rem;
-  }
-
+  /* Pie de página */
   footer{
     background:var(--indigo-dark);
     color:var(--linen);
     padding:60px 0 30px;
     text-align:center;
-}
+  }
 
-.foot-grid{
+  .foot-grid{
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     gap:15px;
-}
+  }
 
-.foot-grid h4{
-    margin-bottom:10px;
-}
+  .foot-grid h4{
+    margin:0 0 10px;
+  }
 
-.foot-grid p{
+  .foot-grid p{
     max-width:500px;
     margin:auto;
-}
+  }
 
-.foot-bottom{
+  .foot-bottom{
     display:flex;
     justify-content:center;
     align-items:center;
     margin-top:40px;
     padding-top:20px;
     border-top:1px solid rgba(247,242,233,0.15);
-}
+  }
 
-.logo2{
-    width:70px;
-    height:70px;
-    object-fit:contain;
-}
-
-.hero-art {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Cambiado a .logo para que coincida exactamente con tu HTML */
-.logo {
-  width: 100%;
-  max-width: 600px; /* Aquí ya puedes controlar qué tan grande se verá */
-  height: auto;
-}
-
+  /* Ajustes para tabletas y teléfonos */
   @media (max-width: 900px){
-    .links{ display:none; }
+    .nav .links{ display:none; }
     .btn-menu{ display:block; }
     .topbar-inner{ font-size:0.75rem; text-align:center; }
-    .whatsapp-btn span, .whatsapp-btn{ font-size:0.78rem; padding:9px 14px; }
-    .hero-grid{ grid-template-columns:1fr; }
+    .whatsapp-btn{ font-size:0.78rem; padding:9px 14px; }
+    .hero-grid{ grid-template-columns:1fr; text-align:center; }
+    .hero p.lead{ margin-left:auto; margin-right:auto; }
+    .hero-ctas{ justify-content:center; }
     .hero-art{ order:-1; max-width:280px; margin:0 auto; }
     .cat-grid{ grid-template-columns:repeat(2,1fr); }
     .prod-grid{ grid-template-columns:repeat(2,1fr); }
     .about{ grid-template-columns:1fr; padding:32px; }
-    .contact-grid{ grid-template-columns:1fr; }
-    .foot-grid{ grid-template-columns:1fr; }
-    form .row2{ grid-template-columns:1fr; }
+  }
+
+  @media (max-width: 500px){
+    .cat-grid{ grid-template-columns:1fr; }
+    .prod-grid{ grid-template-columns:1fr; }
   }
 </style>
 </head>
@@ -597,15 +563,13 @@ section{
     </div>
   </div>
   <div class="nav">
-
     <a class="brand" href="#top">
-    <img src="logo2.png" alt="Modas Flores" class="logo2">
-
-    <span class="brand-text">
+      <img src="logo2.png" alt="Modas Flores" class="logo2">
+      <span class="brand-text">
         <span class="brand-name">Modas Flores</span>
         <span class="brand-tagline">Estilo que inspira</span>
-    </span>
-</a>
+      </span>
+    </a>
     <ul class="links">
       <li><a href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg>Inicio</a></li>
       <li><a href="#categorias"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Categorías</a></li>
@@ -619,45 +583,36 @@ section{
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.4-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.9 2.2 1 2.3c.1.2 1.7 2.7 4.2 3.7.6.2 1 .4 1.4.5.6.2 1.1.2 1.5.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3Z"/></svg>
         Pedir por WhatsApp
       </a>
+      <button class="btn-menu" aria-label="Abrir menú" onclick="document.getElementById('mnav').classList.toggle('show')">☰</button>
     </div>
-    <button class="btn-menu" aria-label="Abrir menú" onclick="document.getElementById('mnav').classList.toggle('show')">☰</button>
   </div>
-  <ul id="mnav" class="links" style="display:none; flex-direction:column; padding:0 24px 18px; gap:14px;">
-    <li><a href="#top">Inicio</a></li>
-    <li><a href="#categorias">Categorías</a></li>
-    <li><a href="#productos">Productos</a></li>
-    <li><a href="#historia">Nosotros</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+  <ul id="mnav" class="links" style="flex-direction:column; padding:0 24px 18px; gap:14px;">
+    <li><a href="#top" onclick="document.getElementById('mnav').classList.remove('show')">Inicio</a></li>
+    <li><a href="#categorias" onclick="document.getElementById('mnav').classList.remove('show')">Categorías</a></li>
+    <li><a href="#productos" onclick="document.getElementById('mnav').classList.remove('show')">Productos</a></li>
+    <li><a href="#historia" onclick="document.getElementById('mnav').classList.remove('show')">Nosotros</a></li>
+    <li><a href="#contacto" onclick="document.getElementById('mnav').classList.remove('show')">Contacto</a></li>
   </ul>
 </header>
 
 <main id="top">
   <section class="hero">
     <div class="hero-grid">
-      
-      <!-- Lado izquierdo: Textos y botones -->
       <div>
         <span class="tag">hecho puntada a puntada</span>
         <h1>Todo lo que tus manos necesitan para <em>coser, crear</em> y terminar cada proyecto.</h1>
         <p class="lead">Telas por yardas, botones de toda forma y color, hilos, agujas y todo lo necesario para costura y manualidades en un solo lugar.</p>
-        
         <div class="hero-ctas">
           <a href="#categorias" class="btn btn-primary">Ver categorías</a>
-          
         </div>
       </div> 
-
-      <!-- Lado derecho: El contenedor de tu logo -->
       <div class="hero-art">
         <a class="brand" href="#top">
           <img src="logo.png" alt="Modas Flores" class="logo">
         </a>
       </div>
-
     </div>
   </section>
-</main>
-
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
@@ -708,40 +663,6 @@ section{
           <svg class="icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 8 L28 20 L40 20 L30 27 L34 40 L24 32 L14 40 L18 27 L8 20 L20 20 Z" fill="#C67783"/></svg>
           <h3>Manualidades</h3>
         </a>
-
-
-                <a class="cat-card" href="#productos">
-          <span class="btn-hole" aria-hidden="true"></span>
-          <svg class="icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 8 L28 20 L40 20 L30 27 L34 40 L24 32 L14 40 L18 27 L8 20 L20 20 Z" fill="#C67783"/></svg>
-          <h3>Manualidades</h3>
-        </a>
-
-
-
-                <a class="cat-card" href="#productos">
-          <span class="btn-hole" aria-hidden="true"></span>
-          <svg class="icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 8 L28 20 L40 20 L30 27 L34 40 L24 32 L14 40 L18 27 L8 20 L20 20 Z" fill="#C67783"/></svg>
-          <h3>Manualidades</h3>
-        </a>
-
-
-
-                <a class="cat-card" href="#productos">
-          <span class="btn-hole" aria-hidden="true"></span>
-          <svg class="icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 8 L28 20 L40 20 L30 27 L34 40 L24 32 L14 40 L18 27 L8 20 L20 20 Z" fill="#C67783"/></svg>
-          <h3>Manualidades</h3>
-        </a>
-
-
-
-                <a class="cat-card" href="#productos">
-          <span class="btn-hole" aria-hidden="true"></span>
-          <svg class="icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 8 L28 20 L40 20 L30 27 L34 40 L24 32 L14 40 L18 27 L8 20 L20 20 Z" fill="#C67783"/></svg>
-          <h3>Manualidades</h3>
-        </a>
-
-
-
       </div>
     </div>
   </section>
@@ -755,7 +676,6 @@ section{
         <p>Una muestra de lo que encuentras en tienda — pregúntanos por colores y existencias.</p>
       </div>
       <div class="prod-grid">
-
         <div class="prod-card">
           <div class="prod-swatch" style="background:#C67783">
             <svg viewBox="0 0 100 80"><rect x="10" y="10" width="80" height="60" rx="3" fill="#F7F2E9" opacity="0.15"/></svg>
@@ -799,7 +719,6 @@ section{
             <div class="price">L 210.00 <small>unidad</small></div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -827,7 +746,6 @@ section{
         <h2>Contacto</h2>
       </div>
       <div class="contact-grid">
-
         <div class="info-card">
           <div class="info-row">
             <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
@@ -858,45 +776,24 @@ section{
             </div>
           </div>
         </div>
-
-       
-         
-         
-
-
-        </form>
-
       </div>
     </div>
   </section>
-
 </main>
 
 <footer>
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <h4 style="text-align: center;">Modas Flores</h4>
-        <p style="color:rgba(247,242,233,0.7); font-size:0.9rem; max-width:32ch;">Telas, botones, hilos y todo lo necesario para costura y manualidades.</p>
+        <h4>Modas Flores</h4>
+        <p style="color:rgba(247,242,233,0.7); font-size:0.9rem;">Telas, botones, hilos y todo lo necesario para costura y manualidades.</p>
       </div>
-
-
     </div>
     <div class="foot-bottom">
       <span>© 2026 Modas Flores</span>
-      
     </div>
   </div>
 </footer>
-
-<script>
-  function handleSubmit(e){
-    e.preventDefault();
-    document.getElementById('successMsg').style.display = 'block';
-    e.target.reset();
-    return false;
-  }
-</script>
 
 </body>
 </html>
