@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de Accesorios de Costura — Modas Flores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --linen:#F7F2E9;
+    --linen-2:#EFE7D8;
+    --ink:#2E2A24;
+    --ink-soft:#5A5348;
+    --indigo:#37477A;
+    --indigo-dark:#28345C;
+    --rose:#C67783;
+    --mustard:#D6A23C;
+    --sage:#7C8F63;
+    --paper:#FFFDF8;
+    --coral:#E8825C;
+    --coral-dark:#DD6E45;
+    --peach:#F6D9C6;
+    --radius: 6px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  
+  body{
+    margin:0;
+    background:var(--linen);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.5;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    color:var(--indigo-dark);
+    margin:0;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+
+  .wrap{
+    max-width:1140px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* Header */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:var(--paper);
+    border-bottom:1px solid rgba(46,42,36,0.1);
+  }
+
+  .topbar{
+    background:var(--peach);
+    padding:9px 24px;
+    text-align:center;
+    font-size:0.85rem;
+    color:var(--indigo-dark);
+    font-weight:500;
+  }
+
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    padding:14px 24px;
+    max-width:1140px;
+    margin:0 auto;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+
+  .brand-text{ display:flex; flex-direction:column; line-height:1.15; }
+  .brand-name{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.4rem;
+    color:var(--indigo-dark);
+  }
+  .brand-tagline{
+    font-family:'Caveat', cursive;
+    font-weight:600;
+    font-size:1rem;
+    color:var(--coral);
+  }
+
+  .links{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    list-style:none;
+    padding:0; margin:0;
+    font-size:0.92rem;
+  }
+  .links a{
+    font-weight:500;
+    color:var(--indigo-dark);
+    transition:color .2s;
+  }
+  .links a:hover, .links a.active{ color:var(--coral); }
+
+  .whatsapp-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--coral);
+    color:var(--paper);
+    padding:10px 20px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:0.85rem;
+    transition:background .2s;
+  }
+  .whatsapp-btn:hover{ background:var(--coral-dark); }
+  .whatsapp-btn svg{ width:18px; height:18px; }
+
+  /* Botón de Menú Móvil (Hamburguesa) */
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .menu-toggle svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--indigo-dark);
+  }
+
+  /* Subpage Header */
+  .page-header{
+    padding:50px 0 30px;
+    background:var(--linen-2);
+    border-bottom:1px solid rgba(46,42,36,0.08);
+  }
+  .page-header h1{
+    font-size:clamp(2rem, 3.5vw, 2.8rem);
+  }
+  .breadcrumb{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    margin-bottom:12px;
+  }
+  .breadcrumb a{ color:var(--indigo); }
+
+  /* Grid de Productos */
+  .catalog-section{
+    padding:60px 0;
+  }
+  .prod-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:24px;
+  }
+  .prod-card{
+    background:var(--paper);
+    border:1px solid rgba(46,42,36,0.1);
+    border-radius:var(--radius);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    transition:transform .2s;
+  }
+  .prod-card:hover{
+    transform:translateY(-4px);
+  }
+  .prod-swatch{
+    aspect-ratio:4/3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .prod-swatch svg{ width:64%; height:64%; }
+  .prod-body{ padding:18px; display:flex; flex-direction:column; flex:1; justify-content:space-between; }
+  .prod-body h3{
+    font-size:1.05rem;
+    margin-top:4px;
+  }
+  .prod-body .price{
+    margin-top:14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-weight:600;
+    color:var(--indigo-dark);
+  }
+  .prod-body .price small{
+    font-weight:500;
+    color:var(--ink-soft);
+    font-size:0.82rem;
+  }
+
+  /* Footer */
+  footer{
+    background:var(--indigo-dark);
+    color:var(--linen);
+    padding:40px 0;
+    text-align:center;
+    margin-top:60px;
+  }
+
+  /* Media Queries para Teléfonos */
+  @media (max-width: 900px){
+    .menu-toggle { display: block; }
+    
+    .links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: var(--paper);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px 24px;
+      gap: 16px;
+      border-bottom: 1px solid rgba(46,42,36,0.1);
+      box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+    }
+    
+    .links.active {
+      display: flex;
+    }
+
+    .whatsapp-btn {
+      display: none;
+    }
+
+    .prod-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+
+  @media (max-width: 500px){
+    .prod-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <span>Calidad que se nota, estilo que te define</span>
+  </div>
+  <div class="nav">
+    <a class="brand" href="index.html">
+      <span class="brand-text">
+        <span class="brand-name">Modas Flores</span>
+        <span class="brand-tagline">Estilo que inspira</span>
+      </span>
+    </a>
+
+    <!-- Botón de Menú Móvil -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+
+    <ul class="links" id="navLinks">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="telas.html">Telas</a></li>
+      <li><a href="botones.html">Botones</a></li>
+      <li><a href="hilos.html">Hilos</a></li>
+      <li><a href="utiles.html" class="active">Accesorios</a></li>
+    </ul>
+
+    <a class="whatsapp-btn" href="https://wa.me/50498142795" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.4-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.9 2.2 1 2.3c.1.2 1.7 2.7 4.2 3.7.6.2 1 .4 1.4.5.6.2 1.1.2 1.5.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3Z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="index.html">Inicio</a> / Accesorios</div>
+      <h1>Accesorios de Costura</h1>
+      <p style="color: var(--ink-soft); margin-top: 8px;">Herramientas y útiles esenciales para facilitarte cada corte, medición y puntada.</p>
+    </div>
+  </div>
+
+  <section class="catalog-section">
+    <div class="wrap">
+      <div class="prod-grid">
+        <div class="prod-card">
+          <div class="prod-swatch" style="background:#EFE7D8">
+            <!-- Tijeras de sastre -->
+            <svg viewBox="0 0 100 100"><path d="M30 70 A10 10 0 1 1 45 60 L60 40 L70 30 M70 70 A10 10 0 1 0 55 60 L40 40 L30 30" stroke="#37477A" stroke-width="4" stroke-linecap="round" fill="none"/><circle cx="50" cy="50" r="3" fill="#D6A23C"/></svg>
+          </div>
+          <div class="prod-body">
+            <h3>Tijeras de Sastre Prof.</h3>
+            <div class="price">L 250.00 <small>unidad</small></div>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-swatch" style="background:#F6D9C6">
+            <!-- Cinta métrica -->
+            <svg viewBox="0 0 100 100"><path d="M20 50 Q50 30 80 50 Q50 70 20 50 Z" fill="none" stroke="#DD6E45" stroke-width="8"/><line x1="30" y1="46" x2="30" y2="54" stroke="#FFFDF8" stroke-width="2"/><line x1="40" y1="44" x2="40" y2="56" stroke="#FFFDF8" stroke-width="2"/><line x1="50" y1="42" x2="50" y2="58" stroke="#FFFDF8" stroke-width="2"/><line x1="60" y1="44" x2="60" y2="56" stroke="#FFFDF8" stroke-width="2"/><line x1="70" y1="46" x2="70" y2="54" stroke="#FFFDF8" stroke-width="2"/></svg>
+          </div>
+          <div class="prod-body">
+            <h3>Cinta Métrica Flexible</h3>
+            <div class="price">L 35.00 <small>unidad</small></div>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-swatch" style="background:#E8825C">
+            <!-- Set de alfileres con alfiletero -->
+            <svg viewBox="0 0 100 100"><path d="M30 60 C30 45 70 45 70 60 C70 75 30 75 30 60 Z" fill="#C67783"/><line x1="35" y1="40" x2="42" y2="52" stroke="#28345C" stroke-width="2"/><circle cx="33" cy="37" r="4" fill="#D6A23C"/><line x1="50" y1="35" x2="50" y2="50" stroke="#28345C" stroke-width="2"/><circle cx="50" cy="31" r="4" fill="#7C8F63"/><line x1="65" y1="40" x2="58" y2="52" stroke="#28345C" stroke-width="2"/><circle cx="67" cy="37" r="4" fill="#FFFDF8"/></svg>
+          </div>
+          <div class="prod-body">
+            <h3>Set de Alfileres y Cojín</h3>
+            <div class="price">L 60.00 <small>juego</small></div>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-swatch" style="background:#7C8F63">
+            <!-- Descosedor / Abreojales -->
+            <svg viewBox="0 0 100 100"><rect x="46" y="55" width="8" height="30" rx="3" fill="#28345C"/><path d="M50 55 L50 20 C45 30 42 35 42 35" stroke="#FFFDF8" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="42" cy="35" r="2.5" fill="#DD6E45"/></svg>
+          </div>
+          <div class="prod-body">
+            <h3>Descosedor Ergonómico</h3>
+            <div class="price">L 25.00 <small>unidad</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Modas Flores — Telas, botones, hilos y manualidades.</p>
+    <p style="color:rgba(247,242,233,0.6); font-size:0.85rem; margin-top:10px;">© 2026 Modas Flores</p>
+  </div>
+</footer>
+
+<!-- Script para el menú desplegable en móviles -->
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+
+</body>
+</html>
