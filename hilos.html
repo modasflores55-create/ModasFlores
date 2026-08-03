@@ -246,13 +246,50 @@
 
   @media (max-width: 500px){
     .prod-grid{ grid-template-columns:1fr; }
-  }
+    .whatsapp-btn span { display: none; }
+    .whatsapp-btn { padding: 14px; border-radius: 50%; }
+}
 
   .logo2{
     width:70px;
     height:70px;
     object-fit:contain;
   }
+
+  .whatsapp-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366; /* Verde oficial de WhatsApp (o usa var(--coral)) */
+  color: #FFFDF8;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.whatsapp-btn:hover {
+  background: #20BA5A;
+  transform: translateY(-2px);
+}
+
+.whatsapp-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Evita que se oculte en teléfonos dentro de las Media Queries */
+@media (max-width: 900px) {
+  .whatsapp-btn {
+    display: inline-flex !important;
+  }
+}
 </style>
 </head>
 <body>
