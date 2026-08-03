@@ -223,31 +223,40 @@
     margin-top:60px;
   }
 
-  /* Media Queries para Teléfonos */
-  @media (max-width: 900px){
-    .menu-toggle { display: block; }
-    
-    .links {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background: var(--paper);
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 20px 24px;
-      gap: 16px;
-      border-bottom: 1px solid rgba(46,42,36,0.1);
-      box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-    }
-    
-    .links.active {
-      display: flex;
-    }
+.whatsapp-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366; /* Verde oficial de WhatsApp (o usa var(--coral)) */
+  color: #FFFDF8;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s, background 0.2s;
+}
 
-    .prod-grid{ grid-template-columns:repeat(2,1fr); }
+.whatsapp-btn:hover {
+  background: #20BA5A;
+  transform: translateY(-2px);
+}
+
+.whatsapp-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Evita que se oculte en teléfonos dentro de las Media Queries */
+@media (max-width: 900px) {
+  .whatsapp-btn {
+    display: inline-flex !important;
   }
+}
 
   @media (max-width: 500px){
     .prod-grid{ grid-template-columns:1fr; }
